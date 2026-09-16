@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Pulse — Global Financial News, Forex &amp; Broker Intelligence</title>
+<meta name="description" content="Market Pulse delivers breaking financial news, in-depth market analysis, broker reviews and trading education across forex, stocks, crypto and commodities.">
+<link rel="canonical" href="https://marketpulse.example.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Market Pulse">
+<meta property="og:title" content="Market Pulse — Global Financial News, Forex & Broker Intelligence">
+<meta property="og:description" content="Breaking financial news, market analysis and broker reviews for the modern trader.">
+<meta property="og:url" content="https://marketpulse.example.com/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Market Pulse — Global Financial News & Broker Intelligence">
+<meta name="twitter:description" content="Breaking financial news, market analysis and broker reviews for the modern trader.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0A1628',
+          navy: '#0F1E3A',
+          accent: '#C9A961',
+          blue: { DEFAULT: '#1E3A8A', mid: '#2563EB', light: '#3B82F6' }
+        },
+        fontFamily: {
+          serif: ['Spectral', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/styles.css?v=7">
+
+<!-- Widget styles (navy header + centered 2-column + blue/purple buttons) -->
+<style>
+  .promo-broker-bar { padding: 2.5rem 0 3rem; background: #fff; }
+  .promo-broker-bar__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 1280px; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* ---- Card shell ---- */
+  .widget-card {
+    background: #fff; border: 1px solid #E5E7EB;
+    border-radius: 10px; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .widget-card__title {
+    margin: 0 !important; padding: 0.9rem 1.25rem;
+    background: #0A1628; color: #fff;
+    font-family: 'Spectral', Georgia, serif; font-size: 1.05rem;
+    font-weight: 600; text-align: center;
+    border-radius: 10px 10px 0 0;
+  }
+  .widget-card__body {
+    padding: 1rem 1.25rem 1.25rem;
+    display: flex; flex-direction: column; flex: 1;
+  }
+  .widget-card__footer {
+    margin-top: auto; padding-top: 1rem;
+    display: block; text-align: center;
+    font-family: 'Spectral', Georgia, serif; font-size: 0.85rem;
+    font-weight: 600; color: #1E3A8A; text-decoration: none;
+    border-top: 1px solid #E5E7EB;
+    transition: color 0.15s ease;
+  }
+  .widget-card__footer:hover { color: #0A1628; }
+  .widget-card__footer span { margin-left: 0.3rem; transition: transform 0.15s ease; display: inline-block; }
+  .widget-card__footer:hover span { transform: translateX(3px); }
+
+  /* ---- Promo list ---- */
+  .promo-list {
+    list-style: none; margin: 0 !important; padding: 0 !important;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem;
+    max-height: 380px; overflow-y: auto;
+  }
+  .promo-list__item {
+    border-bottom: 1px solid #E5E7EB;
+    padding: 0.75rem 0; text-align: center;
+    font-size: 0.78rem; line-height: 1.35;
+  }
+  .promo-list__item a {
+    color: #6B7280; text-decoration: none;
+  }
+  .promo-list__item a:hover { color: #1E3A8A; }
+
+  /* ---- Featured broker rows ---- */
+  .featured-broker {
+    display: grid; grid-template-columns: 1fr 2fr auto;
+    gap: 0.9rem; align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .featured-broker:last-child { border-bottom: 0; }
+  .featured-broker__brand {
+    display: flex; align-items: center; gap: 0.5rem; min-width: 0;
+  }
+  .featured-broker__logo {
+    width: 32px; height: 32px; border-radius: 4px;
+    background: #F3F4F6; color: #0A1628;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Spectral', Georgia, serif; font-weight: 700; font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .featured-broker__logo--valetax   { background: #ECFDF5; color: #047857; }
+  .featured-broker__logo--headway   { background: #FEF3C7; color: #92400E; }
+  .featured-broker__logo--roboforex { background: #DBEAFE; color: #1E3A8A; }
+  .featured-broker__logo--icmarkets  { background: #FEE2E2; color: #B91C1C; }
+  .featured-broker__logo--xm         { background: #F3E8FF; color: #6B21A8; }
+  .featured-broker__name {
+    font-family: 'Spectral', Georgia, serif; font-weight: 700;
+    font-size: 0.95rem; color: #0A1628;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .featured-broker__desc {
+    margin: 0; font-size: 0.72rem; line-height: 1.4; color: #6B7280;
+  }
+  .featured-broker__actions {
+    display: flex; flex-direction: column; gap: 0.4rem; min-width: 120px;
+  }
+  .featured-broker__btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; border-radius: 4px; text-decoration: none;
+    transition: filter 0.15s ease;
+  }
+  .featured-broker__btn:hover { filter: brightness(0.92); color: #fff; }
+  .featured-broker__btn--start { background: #3B82F6; color: #fff; }
+  .featured-broker__btn--visit { background: #8B5CF6; color: #fff; }
+
+  @media (max-width: 1024px) {
+    .promo-broker-bar__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .featured-broker { grid-template-columns: 1fr; }
+    .featured-broker__actions { flex-direction: row; }
+  }
+</style>
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A1628'/%3E%3Crect x='25' y='25' width='50' height='50' fill='none' stroke='%23C9A961' stroke-width='6'/%3E%3C/svg%3E">
+
+<!-- Schema.org NewsArticle JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Market Pulse",
+  "url": "https://marketpulse.example.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://marketpulse.example.com/search.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+</head>
+
+<body>
+
+<!-- ============================================================
+     1. TOP UTILITY BAR
+     ============================================================ -->
+<div class="utility-bar">
+  <div class="utility-bar__inner">
+    <div class="utility-bar__date">
+      <a href="mailto:contact@marketpulse.com" class="utility-bar__email">
+        <i data-lucide="mail" class="utility-bar__email-icon" aria-hidden="true"></i>
+        <span>contact@marketpulse.com</span>
+      </a>
+    </div>
+    <div class="utility-bar__right">
+      <div class="utility-bar__social" aria-label="Social media">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+        <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     2. ADVERTISEMENT - Top Leaderboard
+     ============================================================ -->
+<div class="container">
+  <div class="ad-slot ad-leaderboard" role="complementary" aria-label="Advertisement">
+    <span class="ad-slot__label">Advertisement</span>
+    <span class="ad-slot__content">970 × 90 · Leaderboard</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     3. MAIN HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="site-header__top">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-logo" aria-label="Market Pulse — Home">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">
+          Market<span style="color:var(--color-accent-dark)">Pulse</span>
+          <span class="site-logo__sub">Financial Intelligence</span>
+        </span>
+      </a>
+      <div class="site-header__actions">
+        <button class="search-trigger" aria-label="Search articles">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search markets…</span>
+        </button>
+        <div class="live-indicator">
+          <span class="live-indicator__dot" aria-hidden="true"></span>
+          <span>LIVE</span>
+        </div>
+        <a href="#newsletter" class="subscribe-btn">Subscribe</a>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     4. PRIMARY NAVIGATION
+     ============================================================ -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__inner">
+    <ul class="nav__list">
+      <li class="nav__item"><a href="index.html" class="nav__link is-active">Home</a></li>
+      <li class="nav__item">
+        <a href="#" class="nav__link">Markets <span class="nav__caret" aria-hidden="true"></span></a>
+        <div class="nav__dropdown">
+          <a href="#forex">Forex</a>
+          <a href="#stocks">Stocks</a>
+          <a href="#commodities">Commodities</a>
+          <a href="#bonds">Bonds &amp; Rates</a>
+          <a href="#indices">Indices</a>
+        </div>
+      </li>
+      <li class="nav__item"><a href="#crypto" class="nav__link">Crypto</a></li>
+      <li class="nav__item">
+        <a href="#" class="nav__link">Trading <span class="nav__caret" aria-hidden="true"></span></a>
+        <div class="nav__dropdown">
+          <a href="#education">Education</a>
+          <a href="#education">Strategies</a>
+          <a href="#education">Technical Analysis</a>
+          <a href="#education">Risk Management</a>
+        </div>
+      </li>
+      <li class="nav__item">
+        <a href="#brokers" class="nav__link">Brokers <span class="nav__caret" aria-hidden="true"></span></a>
+        <div class="nav__dropdown">
+          <a href="broker-review.html">Broker Reviews</a>
+          <a href="#comparison">Comparison</a>
+          <a href="#awards">Awards 2026</a>
+          <a href="#bonuses">Promotions</a>
+        </div>
+      </li>
+      <li class="nav__item"><a href="#fintech" class="nav__link">FinTech</a></li>
+      <li class="nav__item"><a href="#education" class="nav__link">Education</a></li>
+      <li class="nav__item"><a href="#latest" class="nav__link">Latest News</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============================================================
+     6. HERO NEWS SECTION
+     ============================================================ -->
+<section class="hero">
+  <div class="hero__grid">
+    <article class="hero__main">
+      <a href="article.html" class="hero__media">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80" alt="Federal Reserve building exterior" loading="eager">
+      </a>
+      <div class="hero__body">
+        <div class="eyebrow eyebrow--inverse">Federal Reserve · Monetary Policy</div>
+        <h1 class="hero__title"><a href="article.html">Fed signals first rate cut of 2026 as inflation cools to 2.4 percent target band</a></h1>
+        <p class="hero__excerpt">Chair Jerome Powell indicated the FOMC is "increasingly confident" inflation is moving sustainably toward target, opening the door to a March cut that would reshape currency markets and Treasury yields globally.</p>
+        <div class="hero__meta">
+          <span>By Sarah Chen</span>
+          <span class="hero__meta-divider">·</span>
+          <span>2 hours ago</span>
+          <span class="hero__meta-divider">·</span>
+          <span>6 min read</span>
+        </div>
+      </div>
+    </article>
+
+    <aside class="hero__side" aria-label="Featured stories">
+      <article class="hero__side-item">
+        <a href="article.html" class="hero__side-media">
+          <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&q=80" alt="Bitcoin cryptocurrency" loading="lazy">
+        </a>
+        <div>
+          <div class="eyebrow">Crypto · Markets</div>
+          <h3 class="hero__side-title"><a href="article.html">Bitcoin reclaims $68,000 as ETF inflows hit record weekly high</a></h3>
+          <div class="hero__side-meta">4 hours ago · Markets Desk</div>
+        </div>
+      </article>
+      <article class="hero__side-item">
+        <a href="article.html" class="hero__side-media">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80" alt="Stock trading screen" loading="lazy">
+        </a>
+        <div>
+          <div class="eyebrow">Equities · Earnings</div>
+          <h3 class="hero__side-title"><a href="article.html">Nvidia earnings preview: AI demand expected to drive another beat</a></h3>
+          <div class="hero__side-meta">5 hours ago · Marcus Webb</div>
+        </div>
+      </article>
+      <article class="hero__side-item">
+        <a href="article.html" class="hero__side-media">
+          <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=400&q=80" alt="Currency exchange board" loading="lazy">
+        </a>
+        <div>
+          <div class="eyebrow">Forex · ECB</div>
+          <h3 class="hero__side-title"><a href="article.html">Euro surges as ECB officials push back on March cut expectations</a></h3>
+          <div class="hero__side-meta">6 hours ago · Daniel Roth</div>
+        </div>
+      </article>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     6.5 PROMO UPDATES + FEATURED BROKERS WIDGET
+     ============================================================ -->
+<section class="promo-broker-bar">
+  <div class="container">
+    <div class="promo-broker-bar__grid">
+
+      <!-- LEFT: New Promo Updates -->
+      <div class="widget-card">
+        <h3 class="widget-card__title">New Promo Updates This Week</h3>
+        <div class="widget-card__body">
+          <ul class="promo-list">
+            <li class="promo-list__item"><a href="#">Pick The Level Win $500 Daily and $5000</a></li>
+            <li class="promo-list__item"><a href="#">Open A Trading Account Claim $500 With</a></li>
+            <li class="promo-list__item"><a href="#">RInfinity 30 USD Welcome Bonus Offer St</a></li>
+            <li class="promo-list__item"><a href="#">Exclusive Markets 30% Summer Forex Trad</a></li>
+            <li class="promo-list__item"><a href="#">CapitalXtend Cashback Reward and the pr</a></li>
+            <li class="promo-list__item"><a href="#">Liquidbrokers Forex Live Trading Compet</a></li>
+            <li class="promo-list__item"><a href="#">Get the facts on the 100% XM Welcome Bo</a></li>
+            <li class="promo-list__item"><a href="#">RoboForex $30 Welcome Bonus and 10% Ext</a></li>
+            <li class="promo-list__item"><a href="#">RoboForex $30 Welcome Bonus and Cashbac</a></li>
+            <li class="promo-list__item"><a href="#">Explore the Moneta Markets 20% Redeposi</a></li>
+            <li class="promo-list__item"><a href="#">Free $30 Welcome Bonus and 120% Deposit</a></li>
+            <li class="promo-list__item"><a href="#">Claim the Dinero Markets 20% Exclusive</a></li>
+            <li class="promo-list__item"><a href="#">HFM $50 Welcome Bonus</a></li>
+            <li class="promo-list__item"><a href="#">FBS 100% Deposit Bonus</a></li>
+            <li class="promo-list__item"><a href="#">OctaFX $50 No Deposit</a></li>
+            <li class="promo-list__item"><a href="#">Exness $10 Trading Bonus</a></li>
+            <li class="promo-list__item"><a href="#">InstaForex 30% Bonus</a></li>
+            <li class="promo-list__item"><a href="#">Vantage 50% Cashback</a></li>
+            <li class="promo-list__item"><a href="#">Tickmill $30 Welcome Gift</a></li>
+          </ul>
+          <a href="#" class="widget-card__footer">View All Promos <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Forex Featured Brokers -->
+      <div class="widget-card">
+        <h3 class="widget-card__title">Forex Featured Brokers</h3>
+        <div class="widget-card__body">
+          <div class="featured-broker">
+            <div class="featured-broker__brand">
+              <div class="featured-broker__logo featured-broker__logo--valetax" aria-hidden="true">V</div>
+              <span class="featured-broker__name">Valetax</span>
+            </div>
+            <p class="featured-broker__desc">Minimum Deposit $1, Leverage up to 1:2000, 30% Deposit Bonus, Broker: STP/ECN</p>
+            <div class="featured-broker__actions">
+              <a href="#" class="featured-broker__btn featured-broker__btn--start">START TRADING</a>
+              <a href="#" class="featured-broker__btn featured-broker__btn--visit">Visit</a>
+            </div>
+          </div>
+          <div class="featured-broker">
+            <div class="featured-broker__brand">
+              <div class="featured-broker__logo featured-broker__logo--headway" aria-hidden="true">H</div>
+              <span class="featured-broker__name">Headway</span>
+            </div>
+            <p class="featured-broker__desc">$150 No Deposit Bonus, Headway Giftshop, Min Deposit 1 USD, Broker: STP/ECN</p>
+            <div class="featured-broker__actions">
+              <a href="#" class="featured-broker__btn featured-broker__btn--start">START TRADING</a>
+              <a href="#" class="featured-broker__btn featured-broker__btn--visit">Visit</a>
+            </div>
+          </div>
+          <div class="featured-broker">
+            <div class="featured-broker__brand">
+              <div class="featured-broker__logo featured-broker__logo--roboforex" aria-hidden="true">R</div>
+              <span class="featured-broker__name">RoboForex</span>
+            </div>
+            <p class="featured-broker__desc">Leverage up to 1:1000, Min Deposit $0, Broker Type: STP/ECN, $30 Bonus</p>
+            <div class="featured-broker__actions">
+              <a href="#" class="featured-broker__btn featured-broker__btn--start">START TRADING</a>
+              <a href="#" class="featured-broker__btn featured-broker__btn--visit">Visit</a>
+            </div>
+          </div>
+          <div class="featured-broker">
+            <div class="featured-broker__brand">
+              <div class="featured-broker__logo featured-broker__logo--icmarkets" aria-hidden="true">IC</div>
+              <span class="featured-broker__name">IC Markets</span>
+            </div>
+            <p class="featured-broker__desc">ASIC + CySEC regulated, Raw spreads from 0.0 pips, Min Deposit $200, MT4/MT5/cTrader</p>
+            <div class="featured-broker__actions">
+              <a href="#" class="featured-broker__btn featured-broker__btn--start">START TRADING</a>
+              <a href="#" class="featured-broker__btn featured-broker__btn--visit">Visit</a>
+            </div>
+          </div>
+          <div class="featured-broker">
+            <div class="featured-broker__brand">
+              <div class="featured-broker__logo featured-broker__logo--xm" aria-hidden="true">XM</div>
+              <span class="featured-broker__name">XM Group</span>
+            </div>
+            <p class="featured-broker__desc">CySEC, ASIC, FCA regulated, Min Deposit $5, $500 Welcome Bonus, MT4/MT5</p>
+            <div class="featured-broker__actions">
+              <a href="#" class="featured-broker__btn featured-broker__btn--start">START TRADING</a>
+              <a href="#" class="featured-broker__btn featured-broker__btn--visit">Visit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6.7 ACTIVE PROMOTIONS (moved up from position 17)
+     ============================================================ -->
+<section class="section" id="bonuses">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-header__title">
+        Active Promotions
+      </h2>
+      <a href="#" class="section-header__cta">All Bonuses</a>
+    </div>
+    <div class="bonus-grid">
+      <article class="bonus-card">
+        <span class="bonus-card__sponsored">Sponsored</span>
+        <div class="bonus-card__amount">
+          <span class="bonus-card__amount-value">$500</span>
+          <span class="bonus-card__amount-label">Welcome</span>
+        </div>
+        <div class="bonus-card__content">
+          <div class="bonus-card__broker">JustMarkets · Limited Offer</div>
+          <h3 class="bonus-card__title">100% deposit match up to $500 for new accounts</h3>
+          <p class="bonus-card__terms">Min deposit $100. 30-day trading volume requirement before withdrawal. Available on MT4 Pro account only.</p>
+          <div class="bonus-card__expiry">⏱ Expires: 30 November 2026</div>
+          <a href="#" class="bonus-card__cta">Claim Bonus</a>
+        </div>
+      </article>
+
+      <article class="bonus-card">
+        <span class="bonus-card__sponsored">Sponsored</span>
+        <div class="bonus-card__amount">
+          <span class="bonus-card__amount-value">$30</span>
+          <span class="bonus-card__amount-label">No-Deposit</span>
+        </div>
+        <div class="bonus-card__content">
+          <div class="bonus-card__broker">RoboForex · Verified</div>
+          <h3 class="bonus-card__title">$30 no-deposit bonus — trade forex risk-free</h3>
+          <p class="bonus-card__terms">No deposit required. Profits withdrawable after 10 standard lots traded. Account verification mandatory.</p>
+          <div class="bonus-card__expiry">⏱ Limited to first 1,000 claims</div>
+          <a href="#" class="bonus-card__cta">Claim Bonus</a>
+        </div>
+      </article>
+
+      <article class="bonus-card">
+        <span class="bonus-card__sponsored">Sponsored</span>
+        <div class="bonus-card__amount">
+          <span class="bonus-card__amount-value">50%</span>
+          <span class="bonus-card__amount-label">Cashback</span>
+        </div>
+        <div class="bonus-card__content">
+          <div class="bonus-card__broker">Hantec Markets · Active</div>
+          <h3 class="bonus-card__title">50% cashback on spread costs for first quarter</h3>
+          <p class="bonus-card__terms">Available on Cent and Pro accounts. Cashback credited weekly. No minimum trading volume required.</p>
+          <div class="bonus-card__expiry">⏱ Expires: 31 December 2026</div>
+          <a href="#" class="bonus-card__cta">Claim Bonus</a>
+        </div>
+      </article>
+
+      <article class="bonus-card">
+        <span class="bonus-card__sponsored">Sponsored</span>
+        <div class="bonus-card__amount">
+          <span class="bonus-card__amount-value">$2K</span>
+          <span class="bonus-card__amount-label">Trading</span>
+        </div>
+        <div class="bonus-card__content">
+          <div class="bonus-card__broker">Valutrades · Premium</div>
+          <h3 class="bonus-card__title">Earn up to $2,000 in trading credit on initial deposit</h3>
+          <p class="bonus-card__terms">Tiered structure: $250 credit per $1,000 deposited up to $2,000 total. 90-day holding period.</p>
+          <div class="bonus-card__expiry">⏱ Expires: 28 February 2027</div>
+          <a href="#" class="bonus-card__cta">Claim Bonus</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. TOP FOREX BROKERS (moved up to 3rd position)
+     ============================================================ -->
+<section class="section section--paper" id="brokers">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-header__title">
+        Top Forex Brokers
+      </h2>
+      <a href="broker-review.html" class="section-header__cta">All Broker Reviews</a>
+    </div>
+    <div class="broker-grid">
+
+      <article class="broker-card">
+        <div class="broker-card__rank">01</div>
+        <div class="broker-card__header">
+          <div class="broker-card__logo">XM</div>
+          <div>
+            <h3 class="broker-card__name">XM Group</h3>
+            <div class="broker-card__rating">
+              <span class="stars" aria-label="Rated 4.8 out of 5">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </span>
+              <span>4.8 / 5.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="broker-card__features">
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Regulation</span>
+            <span class="broker-card__feature-value">CySEC, ASIC, FCA</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Min. Deposit</span>
+            <span class="broker-card__feature-value">$5</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Spreads From</span>
+            <span class="broker-card__feature-value">0.6 pips</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Platforms</span>
+            <span class="broker-card__feature-value">MT4, MT5</span>
+          </div>
+        </div>
+        <div class="broker-card__bonus">
+          <span class="broker-card__bonus-label">Welcome Bonus</span>
+          $30 trading bonus + 100% deposit match up to $500
+        </div>
+        <div class="broker-card__actions">
+          <a href="broker-review.html" class="btn btn--ghost btn--sm">Read Review</a>
+          <a href="#" class="btn btn--primary btn--sm">Visit Broker</a>
+        </div>
+      </article>
+
+      <article class="broker-card">
+        <div class="broker-card__rank">02</div>
+        <div class="broker-card__header">
+          <div class="broker-card__logo">IC</div>
+          <div>
+            <h3 class="broker-card__name">IC Markets</h3>
+            <div class="broker-card__rating">
+              <span class="stars" aria-label="Rated 4.7 out of 5">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" opacity="0.4"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </span>
+              <span>4.7 / 5.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="broker-card__features">
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Regulation</span>
+            <span class="broker-card__feature-value">ASIC, CySEC, FSA</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Min. Deposit</span>
+            <span class="broker-card__feature-value">$200</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Spreads From</span>
+            <span class="broker-card__feature-value">0.0 pips</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Platforms</span>
+            <span class="broker-card__feature-value">MT4, MT5, cTrader</span>
+          </div>
+        </div>
+        <div class="broker-card__bonus">
+          <span class="broker-card__bonus-label">Active Promotion</span>
+          20% welcome bonus up to $3,000 on first deposit
+        </div>
+        <div class="broker-card__actions">
+          <a href="broker-review.html" class="btn btn--ghost btn--sm">Read Review</a>
+          <a href="#" class="btn btn--primary btn--sm">Visit Broker</a>
+        </div>
+      </article>
+
+      <article class="broker-card">
+        <div class="broker-card__rank">03</div>
+        <div class="broker-card__header">
+          <div class="broker-card__logo">PP</div>
+          <div>
+            <h3 class="broker-card__name">Pepperstone</h3>
+            <div class="broker-card__rating">
+              <span class="stars" aria-label="Rated 4.7 out of 5">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" opacity="0.4"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </span>
+              <span>4.7 / 5.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="broker-card__features">
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Regulation</span>
+            <span class="broker-card__feature-value">FCA, ASIC, DFSA</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Min. Deposit</span>
+            <span class="broker-card__feature-value">$200</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Spreads From</span>
+            <span class="broker-card__feature-value">0.0 pips</span>
+          </div>
+          <div class="broker-card__feature">
+            <span class="broker-card__feature-label">Platforms</span>
+            <span class="broker-card__feature-value">MT4, MT5, cTrader</span>
+          </div>
+        </div>
+        <div class="broker-card__bonus">
+          <span class="broker-card__bonus-label">Cashback</span>
+          $10 per lot rebate on Razor account for first 3 months
+        </div>
+        <div class="broker-card__actions">
+          <a href="broker-review.html" class="btn btn--ghost btn--sm">Read Review</a>
+          <a href="#" class="btn btn--primary btn--sm">Visit Broker</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. FEATURED NEWS GRID
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-header__title">
+        Top Stories
+      </h2>
+      <a href="#latest" class="section-header__cta">View All News</a>
+    </div>
+    <div class="feature-grid">
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Trading desk" loading="lazy">
+        </a>
+        <div class="eyebrow">Regulation · MiCA</div>
+        <h3 class="article-card__title"><a href="article.html">EU's MiCA framework forces major crypto exchanges to overhaul European operations</a></h3>
+        <p class="article-card__excerpt">Six months into full enforcement, exchanges report a 40 percent decline in available tokens for European retail clients as compliance costs reshape the market.</p>
+        <div class="article-card__meta">
+          <span>Elena Marchetti</span>
+          <span class="article-card__meta-divider">/</span>
+          <span>Sep 13</span>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800&q=80" alt="Gold bars" loading="lazy">
+        </a>
+        <div class="eyebrow">Commodities · Metals</div>
+        <h3 class="article-card__title"><a href="article.html">Gold breaks $2,700 as central banks accelerate buying amid geopolitical uncertainty</a></h3>
+        <p class="article-card__excerpt">World Gold Council data shows emerging market central banks purchased a record 387 tonnes in the first half, signaling a continued shift away from dollar reserves.</p>
+        <div class="article-card__meta">
+          <span>James Whitfield</span>
+          <span class="article-card__meta-divider">/</span>
+          <span>Sep 13</span>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Financial charts" loading="lazy">
+        </a>
+        <div class="eyebrow">FinTech · Payments</div>
+        <h3 class="article-card__title"><a href="article.html">Stripe's $95 billion valuation reshapes the payments infrastructure landscape</a></h3>
+        <p class="article-card__excerpt">The funding round, led by existing investors, signals renewed confidence in fintech despite a broader cooling in late-stage venture capital.</p>
+        <div class="article-card__meta">
+          <span>Priya Anand</span>
+          <span class="article-card__meta-divider">/</span>
+          <span>Sep 12</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. SPONSORED PROMOTIONAL BANNER
+     ============================================================ -->
+<div class="container">
+  <div class="campaign-banner">
+    <div class="campaign-banner__inner">
+      <div>
+        <div class="campaign-banner__eyebrow">Advertise With Us</div>
+        <h2 class="campaign-banner__title">Grow your broker business with Market Pulse</h2>
+        <p class="campaign-banner__desc">Reach 2M+ active traders every month. Feature your broker, sponsor editorial coverage, and run high-intent campaigns across our forex, crypto and FinTech audience. Custom packages available.</p>
+      </div>
+      <div class="campaign-banner__actions">
+        <a href="#contact" class="campaign-banner__cta">Advertise With Us →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     10. LATEST NEWS + SIDEBAR
+     ============================================================ -->
+<section class="section" id="latest">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-header__title">
+Latest News
+      </h2>
+      <a href="#" class="section-header__cta">Browse Archive</a>
+    </div>
+
+    <div class="layout-two-col">
+      <div class="latest-articles">
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=300&q=80" alt="Trading floor" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Markets · Asia</div>
+          <h3 class="article-row__title"><a href="article.html">Yen weakens past 150 as Bank of Japan holds rates, defying market expectations</a></h3>
+          <p class="article-row__excerpt">Governor Ueda's cautious stance on policy normalization pushed USD/JPY to a six-week high, with traders now betting on intervention rhetoric from Tokyo.</p>
+            <div class="article-card__meta">
+              <span>Hiroshi Tanaka</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>3 hours ago</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>4 min</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=300&q=80" alt="Stock market chart" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Stocks · Tech</div>
+            <h3 class="article-row__title"><a href="article.html">Apple's services revenue hits record $24.2B, but China sales decline 8 percent</a></h3>
+            <p class="article-row__excerpt">Strong performance in subscriptions and App Store fees offset hardware weakness, though analysts flagged intensifying competition from Huawei in premium smartphones.</p>
+            <div class="article-card__meta">
+              <span>Marcus Webb</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>5 hours ago</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>6 min</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1518544801976-3e159e50e5bb?w=300&q=80" alt="Currency exchange" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Forex · Sterling</div>
+            <h3 class="article-row__title"><a href="article.html">Pound rallies on hotter UK inflation print, BoE rate cut bets pushed to June</a></h3>
+            <p class="article-row__excerpt">CPI came in at 3.1 percent year-on-year, above the 2.9 percent consensus, forcing a repricing of gilt yields and strengthening GBP across the board.</p>
+            <div class="article-card__meta">
+              <span>Daniel Roth</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>7 hours ago</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>5 min</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1629339942248-45d4b10c8c3f?w=300&q=80" alt="Crude oil" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Commodities · Energy</div>
+            <h3 class="article-row__title"><a href="article.html">Brent crude holds above $78 as OPEC+ extends production cuts through Q2</a></h3>
+            <p class="article-row__excerpt">The cartel's decision to maintain current output levels surprised markets expecting a gradual unwind, providing fresh support for energy equities.</p>
+            <div class="article-card__meta">
+              <span>Sarah Chen</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>9 hours ago</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>4 min</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1639815188546-c43c240ff4df?w=300&q=80" alt="Ethereum blockchain" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Crypto · DeFi</div>
+            <h3 class="article-row__title"><a href="article.html">Ethereum ETF approval sparks $1.2B in first-day trading volume across US venues</a></h3>
+            <p class="article-row__excerpt">Spot ETH ETFs from BlackRock, Fidelity and Franklin Templeton debuted with strong institutional demand, though outflows followed in subsequent sessions.</p>
+            <div class="article-card__meta">
+              <span>Priya Anand</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>11 hours ago</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>7 min</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-row" style="border-bottom: none;">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=300&q=80" alt="Trading platform" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Brokers · Industry</div>
+            <h3 class="article-row__title"><a href="article.html">CySEC tightens oversight on Cyprus-based brokers with new capital requirements</a></h3>
+            <p class="article-row__excerpt">Minimum capital thresholds rise to €750,000 for new license applicants, a move that could trigger consolidation among smaller retail FX firms operating from Limassol.</p>
+            <div class="article-card__meta">
+              <span>Elena Marchetti</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>14 hours ago</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>8 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Inline ad -->
+        <div class="ad-slot ad-inline" role="complementary" aria-label="Advertisement">
+          <span class="ad-slot__label">Advertisement</span>
+          <span class="ad-slot__content">In-Feed · 970 × 120</span>
+        </div>
+
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1554260570-9140fd3b7614?w=300&q=80" alt="Financial analysis" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Analysis · Macro</div>
+            <h3 class="article-row__title"><a href="article.html">Why the dollar's reserve status is more resilient than skeptics claim</a></h3>
+            <p class="article-row__excerpt">Despite BRICS de-dollarization rhetoric, IMF data shows the greenback still accounts for 58 percent of global reserves — and that's not changing anytime soon.</p>
+            <div class="article-card__meta">
+              <span>James Whitfield</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>16 hours ago</span>
+              <span class="article-card__meta-divider">/</span>
+              <span>10 min</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Sidebar">
+        <!-- Most Read -->
+        <div class="sidebar-widget">
+          <h3 class="sidebar-widget__title">Most Read <span class="sidebar-widget__title-meta">This Week</span></h3>
+          <ol class="most-read-list">
+            <li>
+              <span class="most-read-list__num">01</span>
+              <div>
+                <h4 class="most-read-list__title"><a href="article.html">The hidden cost of zero-commission brokers: payment for order flow explained</a></h4>
+                <div class="most-read-list__meta">Markets · 42k views</div>
+              </div>
+            </li>
+            <li>
+              <span class="most-read-list__num">02</span>
+              <div>
+                <h4 class="most-read-list__title"><a href="article.html">FCA warns 47 unauthorized firms operating in the UK this month</a></h4>
+                <div class="most-read-list__meta">Regulation · 31k views</div>
+              </div>
+            </li>
+            <li>
+              <span class="most-read-list__num">03</span>
+              <div>
+                <h4 class="most-read-list__title"><a href="article.html">Inside the hedge fund strategy that returned 287 percent in 2025</a></h4>
+                <div class="most-read-list__meta">Analysis · 28k views</div>
+              </div>
+            </li>
+            <li>
+              <span class="most-read-list__num">04</span>
+              <div>
+                <h4 class="most-read-list__title"><a href="article.html">What the carry trade unwind means for emerging market currencies</a></h4>
+                <div class="most-read-list__meta">Forex · 24k views</div>
+              </div>
+            </li>
+            <li>
+              <span class="most-read-list__num">05</span>
+              <div>
+                <h4 class="most-read-list__title"><a href="article.html">Five brokers that changed their fee structures this quarter</a></h4>
+                <div class="most-read-list__meta">Brokers · 19k views</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Sidebar Ad -->
+        <div class="ad-slot ad-sidebar" role="complementary" aria-label="Advertisement">
+          <span class="ad-slot__label">Advertisement</span>
+          <span class="ad-slot__content">300 × 250 · MPU</span>
+        </div>
+
+        <!-- Trending -->
+        <div class="sidebar-widget">
+          <h3 class="sidebar-widget__title">Trending <span class="sidebar-widget__title-meta">Now</span></h3>
+          <ol class="most-read-list">
+            <li>
+              <span class="most-read-list__num">01</span>
+              <div>
+                <h4 class="most-read-list__title"><a href="article.html">Switzerland's quiet revolution in tokenized assets</a></h4>
+                <div class="most-read-list__meta">Crypto · 4h ago</div>
+              </div>
+            </li>
+            <li>
+              <span class="most-read-list__num">02</span>
+              <div>
+                <h4 class="most-read-list__title"><a href="article.html">Why emerging market debt is back on the menu for pension funds</a></h4>
+                <div class="most-read-list__meta">Bonds · 6h ago</div>
+              </div>
+            </li>
+            <li>
+              <span class="most-read-list__num">03</span>
+              <div>
+                <h4 class="most-read-list__title"><a href="article.html">The mathematics behind algorithmic options strategies</a></h4>
+                <div class="most-read-list__meta">Education · 8h ago</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Newsletter mini -->
+        <div class="sidebar-widget" style="background: var(--color-ink); padding: 1.5rem; color: var(--color-paper);">
+          <h3 class="sidebar-widget__title" style="color: var(--color-paper); border-color: var(--color-accent);">Morning Brief</h3>
+          <p style="font-size: 0.9rem; color: rgba(248,250,252,0.75); margin: 0 0 1rem; line-height: 1.5;">Wake up to the day's most important financial stories, delivered before the opening bell.</p>
+          <form class="newsletter__form" style="margin: 0;" onsubmit="return false;">
+            <input type="email" class="newsletter__input" placeholder="Your email" required style="padding: 0.75rem 1rem; font-size: 0.85rem;">
+            <button type="submit" class="newsletter__submit" style="padding: 0.75rem 1rem; font-size: 0.75rem;">Join</button>
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     11-15. CATEGORY SECTIONS
+     ============================================================ -->
+<section class="section section--paper" id="stocks">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-header__title">
+        Stocks &amp; Equities
+      </h2>
+      <a href="#" class="section-header__cta">All Equities</a>
+    </div>
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem;">
+      <article class="article-card">
+        <a href="article.html" class="article-card__media" style="aspect-ratio: 16/9;">
+          <img src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=900&q=80" alt="Stock trading screens" loading="lazy">
+        </a>
+        <div class="eyebrow">Equities · Analysis</div>
+        <h3 class="article-card__title" style="font-size: 1.5rem;"><a href="article.html">Wall Street's $11 trillion rally faces its first real test as earnings season opens</a></h3>
+        <p class="article-card__excerpt">After three consecutive years of double-digit S&amp;P 500 gains, valuation discipline is returning to focus as analysts trim estimates amid softening consumer demand and persistent wage pressures.</p>
+        <div class="article-card__meta"><span>Marcus Webb</span><span class="article-card__meta-divider">/</span><span>Sep 12</span></div>
+      </article>
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=300&q=80" alt="Bank" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Banking</div>
+            <h3 class="article-row__title"><a href="article.html">JPMorgan tops Q3 earnings estimates on trading revenue strength</a></h3>
+            <div class="article-card__meta"><span>2h ago</span></div>
+          </div>
+        </article>
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=300&q=80" alt="Investor meeting" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">IPO · Markets</div>
+            <h3 class="article-row__title"><a href="article.html">Shein files confidentially for London listing amid US regulatory headwinds</a></h3>
+            <div class="article-card__meta"><span>5h ago</span></div>
+          </div>
+        </article>
+        <article class="article-row" style="border-bottom: none;">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1559523275-98fbfa3a64d2?w=300&q=80" alt="Market data" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Analysis</div>
+            <h3 class="article-row__title"><a href="article.html">The seven market sectors most exposed to a recession scenario</a></h3>
+            <div class="article-card__meta"><span>8h ago</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="crypto">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-header__title">
+        Crypto &amp; Digital Assets
+      </h2>
+      <a href="#" class="section-header__cta">All Crypto News</a>
+    </div>
+    <div class="feature-grid">
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80" alt="Bitcoin" loading="lazy">
+        </a>
+        <div class="eyebrow">Bitcoin · Markets</div>
+        <h3 class="article-card__title"><a href="article.html">Bitcoin's halving cycle points to $120K by Q4, says Standard Chartered</a></h3>
+        <p class="article-card__excerpt">Research note argues ETF flows, the upcoming halving and weakening dollar liquidity create a setup reminiscent of the 2020 cycle, though with a more institutional flavor.</p>
+        <div class="article-card__meta"><span>Priya Anand</span><span class="article-card__meta-divider">/</span><span>Sep 13</span></div>
+      </article>
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&q=80" alt="Blockchain" loading="lazy">
+        </a>
+        <div class="eyebrow">DeFi · Protocol</div>
+        <h3 class="article-card__title"><a href="article.html">Uniswap v4 launches with hook-based architecture, promising 99% gas reduction</a></h3>
+        <p class="article-card__excerpt">The new version introduces customizable liquidity pools and a singleton contract design that dramatically reduces deployment costs for custom AMMs and market makers.</p>
+        <div class="article-card__meta"><span>Hiroshi Tanaka</span><span class="article-card__meta-divider">/</span><span>Sep 12</span></div>
+      </article>
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1629339942248-45d4b10c8c3f?w=800&q=80" alt="Tokenization" loading="lazy">
+        </a>
+        <div class="eyebrow">Tokenization · RWAs</div>
+        <h3 class="article-card__title"><a href="article.html">BlackRock's BUIDL fund crosses $500M as institutional tokenization accelerates</a></h3>
+        <p class="article-card__excerpt">The tokenized US Treasury fund continues to attract allocators seeking yield on-chain, with major asset managers reportedly preparing similar products.</p>
+        <div class="article-card__meta"><span>James Whitfield</span><span class="article-card__meta-divider">/</span><span>Sep 11</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--paper" id="commodities">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-header__title">
+        Commodities
+      </h2>
+      <a href="#" class="section-header__cta">All Commodities</a>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600&q=80" alt="Gold" loading="lazy">
+        </a>
+        <div class="eyebrow">Precious Metals</div>
+        <h3 class="article-card__title" style="font-size: 1.1rem;"><a href="article.html">Silver squeeze: industrial demand pushes price to 12-year high</a></h3>
+        <div class="article-card__meta"><span>Sep 13</span></div>
+      </article>
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=600&q=80" alt="Copper" loading="lazy">
+        </a>
+        <div class="eyebrow">Industrial Metals</div>
+        <h3 class="article-card__title" style="font-size: 1.1rem;"><a href="article.html">Copper deficit deepens as EV transition outpaces mine supply growth</a></h3>
+        <div class="article-card__meta"><span>Sep 12</span></div>
+      </article>
+      <article class="article-card">
+        <a href="article.html" class="article-card__media">
+          <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&q=80" alt="Natural gas" loading="lazy">
+        </a>
+        <div class="eyebrow">Energy</div>
+        <h3 class="article-card__title" style="font-size: 1.1rem;"><a href="article.html">LNG markets tighten as European storage levels hit five-year low</a></h3>
+        <div class="article-card__meta"><span>Sep 11</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="fintech">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-header__title">
+        FinTech &amp; Innovation
+      </h2>
+      <a href="#" class="section-header__cta">All FinTech</a>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;">
+      <article class="article-card">
+        <a href="article.html" class="article-card__media" style="aspect-ratio: 16/10;">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80" alt="FinTech app" loading="lazy">
+        </a>
+        <div class="eyebrow">Banking · Digital</div>
+        <h3 class="article-card__title" style="font-size: 1.35rem;"><a href="article.html">Revolut secures UK banking license after three-year application process</a></h3>
+        <p class="article-card__excerpt">The $33 billion fintech's approval removes regulatory overhang and opens the door to FSCS-protected deposits, lending products and a potential London IPO by 2027.</p>
+        <div class="article-card__meta"><span>Priya Anand</span><span class="article-card__meta-divider">/</span><span>Sep 13</span></div>
+      </article>
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&q=80" alt="Mobile payment" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Payments</div>
+            <h3 class="article-row__title"><a href="article.html">Visa's new stablecoin settlement network goes live with ten anchor banks</a></h3>
+            <div class="article-card__meta"><span>3h ago</span></div>
+          </div>
+        </article>
+        <article class="article-row">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=300&q=80" alt="AI finance" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">AI · Trading</div>
+            <h3 class="article-row__title"><a href="article.html">Two Sigma and Citadel test large language models for earnings call analysis</a></h3>
+            <div class="article-card__meta"><span>6h ago</span></div>
+          </div>
+        </article>
+        <article class="article-row" style="border-bottom: none;">
+          <a href="article.html" class="article-row__media">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&q=80" alt="Robo advisor" loading="lazy">
+          </a>
+          <div>
+            <div class="eyebrow">Wealth Tech</div>
+            <h3 class="article-row__title"><a href="article.html">Robo-advisors now manage 14% of US retail investment assets, Schwab reports</a></h3>
+            <div class="article-card__meta"><span>10h ago</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     14. BROKER SECTION (MOVED UP — see position 3)
+     ============================================================ -->
+
+<!-- ============================================================
+     15. BROKER COMPARISON TABLE — REMOVED
+     ============================================================ -->
+
+<!-- ============================================================
+     16. BROKER AWARDS
+     ============================================================ -->
+<section class="section section--dark" id="awards">
+  <div class="container">
+    <div class="section-header section-header--dark">
+      <h2 class="section-header__title">
+        Finance Awards 2026
+      </h2>
+      <a href="#" class="section-header__cta" style="color: var(--color-accent);">View All Categories</a>
+    </div>
+    <div class="awards-grid">
+      <article class="award-card">
+        <div class="award-card__icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M32 4L40 16L52 18L44 28L46 42L32 36L18 42L20 28L12 18L24 16L32 4Z" fill="#C9A961" stroke="#A88B4A" stroke-width="1"/>
+            <circle cx="32" cy="22" r="6" fill="#0A1628"/>
+            <rect x="20" y="46" width="24" height="4" fill="#C9A961"/>
+            <rect x="22" y="52" width="20" height="3" fill="#C9A961"/>
+          </svg>
+        </div>
+        <h3 class="award-card__title">Best Forex Broker</h3>
+        <div class="award-card__broker">XM Group</div>
+        <div class="award-card__year">2026 Winner</div>
+      </article>
+
+      <article class="award-card">
+        <div class="award-card__icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="28" r="20" fill="none" stroke="#C9A961" stroke-width="2"/>
+            <path d="M22 28L30 36L44 22" stroke="#C9A961" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="20" y="46" width="24" height="4" fill="#C9A961"/>
+            <rect x="22" y="52" width="20" height="3" fill="#C9A961"/>
+          </svg>
+        </div>
+        <h3 class="award-card__title">Best Trading Platform</h3>
+        <div class="award-card__broker">IC Markets</div>
+        <div class="award-card__year">2026 Winner</div>
+      </article>
+
+      <article class="award-card">
+        <div class="award-card__icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M32 6L40 20L54 22L44 32L46 46L32 40L18 46L20 32L10 22L24 20L32 6Z" fill="none" stroke="#C9A961" stroke-width="2"/>
+            <circle cx="32" cy="28" r="8" fill="#C9A961" opacity="0.3"/>
+            <rect x="20" y="50" width="24" height="3" fill="#C9A961"/>
+          </svg>
+        </div>
+        <h3 class="award-card__title">Best Low Spread Broker</h3>
+        <div class="award-card__broker">Pepperstone</div>
+        <div class="award-card__year">2026 Winner</div>
+      </article>
+
+      <article class="award-card">
+        <div class="award-card__icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <rect x="16" y="20" width="32" height="24" fill="none" stroke="#C9A961" stroke-width="2"/>
+            <path d="M16 20L32 8L48 20" stroke="#C9A961" stroke-width="2" fill="none"/>
+            <circle cx="32" cy="32" r="4" fill="#C9A961"/>
+            <path d="M24 50L22 56M32 50L32 56M40 50L42 56" stroke="#C9A961" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="award-card__title">Best Beginner Broker</h3>
+        <div class="award-card__broker">Exness</div>
+        <div class="award-card__year">2026 Winner</div>
+      </article>
+
+      <article class="award-card">
+        <div class="award-card__icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M20 44L28 36L36 40L48 24" stroke="#C9A961" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="48" cy="24" r="4" fill="#C9A961"/>
+            <rect x="14" y="50" width="36" height="3" fill="#C9A961"/>
+          </svg>
+        </div>
+        <h3 class="award-card__title">Best Partner Program</h3>
+        <div class="award-card__broker">RoboForex</div>
+        <div class="award-card__year">2026 Winner</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     17. FOREX BONUSES / PROMOTIONS (MOVED UP — see position 3)
+     ============================================================ -->
+
+<!-- Mid-content ad -->
+<div class="container">
+  <div class="ad-slot ad-leaderboard-large" role="complementary" aria-label="Advertisement">
+    <span class="ad-slot__label">Advertisement</span>
+    <span class="ad-slot__content">970 × 250 · Large Leaderboard</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     18. EDUCATION SECTION — REMOVED
+     ============================================================ -->
+
+<!-- ============================================================
+     22. NEWSLETTER SECTION
+     ============================================================ -->
+<section class="newsletter" id="newsletter">
+  <div class="newsletter__inner">
+    <div class="newsletter__eyebrow">Daily Briefing</div>
+    <h2 class="newsletter__title">Stay ahead of the markets</h2>
+    <p class="newsletter__desc">Get breaking financial news, exclusive analysis and trading insights from our editorial team, delivered to your inbox every morning before the opening bell.</p>
+    <form class="newsletter__form" onsubmit="return false;">
+      <input type="email" class="newsletter__input" placeholder="Enter your email address" required>
+      <button type="submit" class="newsletter__submit">Subscribe</button>
+    </form>
+    <p class="newsletter__disclaimer">By subscribing you agree to our Privacy Policy. Unsubscribe anytime. We don't spam — read our editorial standards.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     21. FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="site-footer__grid">
+    <div class="site-footer__brand">
+      <a href="index.html" class="site-logo">
+        <span class="site-logo__mark" aria-hidden="true"></span>
+        <span class="site-logo__text">
+          Market<span style="color:var(--color-accent)">Pulse</span>
+          <span class="site-logo__sub">Financial Intelligence</span>
+        </span>
+      </a>
+      <p class="site-footer__about">Independent financial journalism, in-depth broker reviews and market analysis for serious traders and institutional professionals.</p>
+      <div class="site-footer__social">
+        <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="RSS"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.014 7.374 20 6.18 20 4.984 20 4 19.014 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="site-footer__col">
+      <h4>Markets</h4>
+      <ul>
+        <li><a href="#forex">Forex</a></li>
+        <li><a href="#stocks">Stocks</a></li>
+        <li><a href="#crypto">Crypto</a></li>
+        <li><a href="#commodities">Commodities</a></li>
+        <li><a href="#">Bonds &amp; Rates</a></li>
+        <li><a href="#">Indices</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__col">
+      <h4>Trading</h4>
+      <ul>
+        <li><a href="broker-review.html">Broker Reviews</a></li>
+        <li><a href="#comparison">Comparison</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#education">Strategies</a></li>
+        <li><a href="#education">Risk Management</a></li>
+        <li><a href="#bonuses">Promotions</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Editorial Team</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press Kit</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">Risk Disclosure</a></li>
+        <li><a href="#">Editorial Standards</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div>© <span data-year>2026</span> Market Pulse Media Ltd. All rights reserved.</div>
+    <div class="site-footer__bottom-links">
+      <a href="#">Sitemap</a>
+      <a href="#">Accessibility</a>
+      <a href="#">RSS</a>
+      <a href="#">Press</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Financial compliance disclaimer -->
+<div class="disclaimer-bar">
+  <div class="disclaimer-bar__inner">
+    <strong>Risk Disclosure:</strong> Trading forex, CFDs and other leveraged financial instruments carries a high level of risk and may not be suitable for all investors. You could lose more than your initial deposit. Past performance is not indicative of future results. The information on this site is for informational purposes only and does not constitute investment advice. Market Pulse does not provide execution services.
+  </div>
+</div>
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<!-- Main JS -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
