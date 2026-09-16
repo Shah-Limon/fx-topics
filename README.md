@@ -1,4 +1,4 @@
-# Market Pulse — Financial News & Forex Platform
+# FX Topics — Financial News & Forex Platform
 
 A premium, production-ready static website for a financial news publication and Forex broker comparison platform. Built as an original design inspired by editorial financial media (FinanceFeeds, Bloomberg-style hierarchy) and Forex affiliate portals (FXDailyInfo-style broker cards, bonuses, awards).
 

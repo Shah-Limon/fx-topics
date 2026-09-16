@@ -1,6 +1,6 @@
 <?php
 /**
- * Market Pulse — Connection Test Page
+ * FX Topics — Connection Test Page
  *
  * Visit:  http://localhost/marketpulse/db-test.php
  *
@@ -66,7 +66,7 @@ $tests[] = [
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Market Pulse — DB Connection Test</title>
+<title>FX Topics — DB Connection Test</title>
 <style>
   body { font: 14px/1.5 -apple-system, system-ui, sans-serif; background: #0A1628; color: #E5E7EB; padding: 40px; }
   h1   { font-family: Georgia, serif; color: #C9A961; margin: 0 0 24px; }
@@ -81,7 +81,7 @@ $tests[] = [
 </style>
 </head>
 <body>
-<h1>Market Pulse — Database Connection Test</h1>
+<h1>FX Topics — Database Connection Test</h1>
 <div class="card">
   <?php foreach ($tests as $t): ?>
     <div class="row">

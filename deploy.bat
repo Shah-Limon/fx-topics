@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================================
-REM Market Pulse - Git + Cloudflare Pages deploy helper
+REM FX Topics - Git + Cloudflare Pages deploy helper
 REM
 REM This script pushes your local site to GitHub. Cloudflare Pages will
 REM auto-deploy from there within ~60 seconds.
@@ -41,7 +41,7 @@ if errorlevel 1 (
 REM --- Get repo info ---
 echo.
 echo ============================================================================
-echo   Market Pulse - Cloudflare Pages Deploy Helper
+echo   FX Topics - Cloudflare Pages Deploy Helper
 echo ============================================================================
 echo.
 
@@ -97,8 +97,8 @@ if errorlevel 1 (
 
 REM --- Stage and commit ---
 echo.
-set /p MSG="Commit message [Update Market Pulse site]: "
-if "!MSG!"=="" set "MSG=Update Market Pulse site"
+set /p MSG="Commit message [Update FX Topics site]: "
+if "!MSG!"=="" set "MSG=Update FX Topics site"
 
 echo.
 echo [2/5] Staging files...

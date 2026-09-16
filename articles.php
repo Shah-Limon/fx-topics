@@ -1,6 +1,6 @@
 <?php
 /**
- * Market Pulse — Article list demo
+ * FX Topics — Article list demo
  *
  * Pulls published articles from the DB and renders them in the
  * site's existing card style. This is a working example of how
@@ -47,7 +47,7 @@ function time_ago(?string $ts): string {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Latest Articles — Market Pulse</title>
+<title>Latest Articles — FX Topics</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: 'Inter', system-ui, sans-serif; background:#fff; color:#0A1628; }

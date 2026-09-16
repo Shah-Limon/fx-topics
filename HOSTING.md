@@ -1,4 +1,4 @@
-# Hosting Market Pulse on Cloudflare (Permanent)
+# Hosting FX Topics on Cloudflare (Permanent)
 
 Two options — pick what you need.
 

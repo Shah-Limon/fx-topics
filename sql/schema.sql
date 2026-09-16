@@ -1,5 +1,5 @@
 -- =============================================================
--- Market Pulse — Starter Schema
+-- FX Topics — Starter Schema
 -- Run this in phpMyAdmin → marketpulse → SQL tab
 -- =============================================================
 

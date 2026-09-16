@@ -1,6 +1,6 @@
 <?php
 /**
- * Market Pulse — MySQL Database Connection
+ * FX Topics — MySQL Database Connection
  *
  * XAMPP defaults:
  *   Host:     localhost
