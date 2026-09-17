@@ -1,6 +1,6 @@
 <?php
 /**
- * Market Pulse — MySQL Database Connection
+ * FxTopics — MySQL Database Connection
  *
  * XAMPP defaults:
  *   Host:     localhost
@@ -15,7 +15,7 @@ declare(strict_types=1);
 
 const DB_HOST    = 'localhost';
 const DB_PORT    = 3306;
-const DB_NAME    = 'marketpulse';
+const DB_NAME    = 'fxtopics';
 const DB_USER    = 'root';
 const DB_PASS    = '';
 const DB_CHARSET = 'utf8mb4';

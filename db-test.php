@@ -1,10 +1,10 @@
 <?php
 /**
- * Market Pulse — Connection Test Page
+ * FxTopics — Connection Test Page
  *
- * Visit:  http://localhost/marketpulse/db-test.php
+ * Visit:  http://localhost/fxtopics/db-test.php
  *
- * প্রথমে phpMyAdmin এ গিয়ে `marketpulse` database create করুন,
+ * প্রথমে phpMyAdmin এ গিয়ে `fxtopics` database create করুন,
  * তারপর এই page refresh করুন।
  */
 
@@ -66,7 +66,7 @@ $tests[] = [
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Market Pulse — DB Connection Test</title>
+<title>FxTopics — DB Connection Test</title>
 <style>
   body { font: 14px/1.5 -apple-system, system-ui, sans-serif; background: #0A1628; color: #E5E7EB; padding: 40px; }
   h1   { font-family: Georgia, serif; color: #C9A961; margin: 0 0 24px; }
@@ -81,7 +81,7 @@ $tests[] = [
 </style>
 </head>
 <body>
-<h1>Market Pulse — Database Connection Test</h1>
+<h1>FxTopics — Database Connection Test</h1>
 <div class="card">
   <?php foreach ($tests as $t): ?>
     <div class="row">
@@ -96,7 +96,7 @@ $tests[] = [
   <?php endforeach; ?>
 </div>
 <p style="margin-top:24px;color:#9CA3AF;">
-  Next step: <a href="http://localhost/phpmyadmin/">phpMyAdmin open করুন</a> এবং <code>marketpulse</code> database এ প্রথম table তৈরি করুন।
+  Next step: <a href="http://localhost/phpmyadmin/">phpMyAdmin open করুন</a> এবং <code>fxtopics</code> database এ প্রথম table তৈরি করুন।
 </p>
 </body>
 </html>

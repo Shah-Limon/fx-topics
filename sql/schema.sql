@@ -1,6 +1,6 @@
 -- =============================================================
--- Market Pulse — Starter Schema
--- Run this in phpMyAdmin → marketpulse → SQL tab
+-- FxTopics — Starter Schema
+-- Run this in phpMyAdmin → fxtopics → SQL tab
 -- =============================================================
 
 SET NAMES utf8mb4;

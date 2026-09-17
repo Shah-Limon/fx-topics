@@ -1,12 +1,12 @@
 <?php
 /**
- * Market Pulse — Article list demo
+ * FxTopics — Article list demo
  *
  * Pulls published articles from the DB and renders them in the
  * site's existing card style. This is a working example of how
  * the static HTML pages will eventually be backed by MySQL.
  *
- * Visit:  http://localhost/marketpulse/articles.php
+ * Visit:  http://localhost/fxtopics/articles.php
  */
 
 declare(strict_types=1);
@@ -47,7 +47,7 @@ function time_ago(?string $ts): string {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Latest Articles — Market Pulse</title>
+<title>Latest Articles — FxTopics</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body { font-family: 'Inter', system-ui, sans-serif; background:#fff; color:#0A1628; }

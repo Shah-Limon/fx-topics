@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market Pulse — Global Financial News, Forex &amp; Broker Intelligence</title>
-<meta name="description" content="Market Pulse delivers breaking financial news, in-depth market analysis, broker reviews and trading education across forex, stocks, crypto and commodities.">
-<link rel="canonical" href="https://marketpulse.example.com/">
+<title>FxTopics — Global Financial News, Forex &amp; Broker Intelligence</title>
+<meta name="description" content="FxTopics delivers breaking financial news, in-depth market analysis, broker reviews and trading education across forex, stocks, crypto and commodities.">
+<link rel="canonical" href="https://fxtopics.example.com/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Market Pulse">
-<meta property="og:title" content="Market Pulse — Global Financial News, Forex & Broker Intelligence">
+<meta property="og:site_name" content="FxTopics">
+<meta property="og:title" content="FxTopics — Global Financial News, Forex & Broker Intelligence">
 <meta property="og:description" content="Breaking financial news, market analysis and broker reviews for the modern trader.">
-<meta property="og:url" content="https://marketpulse.example.com/">
+<meta property="og:url" content="https://fxtopics.example.com/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Market Pulse — Global Financial News & Broker Intelligence">
+<meta name="twitter:title" content="FxTopics — Global Financial News & Broker Intelligence">
 <meta name="twitter:description" content="Breaking financial news, market analysis and broker reviews for the modern trader.">
 
 <!-- Fonts -->
@@ -48,7 +48,8 @@
 </script>
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="css/styles.css?v=8">
+<link rel="stylesheet" href="css/styles.css?v=10">
+<link rel="stylesheet" href="css/widget.css?v=10">
 
 <!-- Widget styles (navy header + centered 2-column + blue/purple buttons) -->
 <style>
@@ -60,6 +61,7 @@
     background: #fff; border: 1px solid #E5E7EB;
     border-radius: 10px; overflow: hidden;
     display: flex; flex-direction: column;
+    max-height: 760px;
   }
   .widget-card__title {
     margin: 0 !important; padding: 0.9rem 1.25rem;
@@ -71,7 +73,19 @@
   .widget-card__body {
     padding: 1rem 1.25rem 1.25rem;
     display: flex; flex-direction: column; flex: 1;
+    min-height: 0;
   }
+
+  .widget-card__body--scroll {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #C9A961 transparent;
+    max-height: 700px;
+  }
+  .widget-card__body--scroll::-webkit-scrollbar { width: 8px; }
+  .widget-card__body--scroll::-webkit-scrollbar-track { background: transparent; margin: 4px 0; }
+  .widget-card__body--scroll::-webkit-scrollbar-thumb { background: #C9A961; border-radius: 4px; border: 2px solid #fff; }
+  .widget-card__body--scroll::-webkit-scrollbar-thumb:hover { background: #A88B4A; }
   .widget-card__footer {
     margin-top: auto; padding-top: 1rem;
     display: block; text-align: center;
@@ -88,7 +102,9 @@
   .promo-list {
     list-style: none; margin: 0 !important; padding: 0 !important;
     display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem;
-    max-height: 380px; overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
   }
   .promo-list__item {
     border-bottom: 1px solid #E5E7EB;
@@ -106,6 +122,7 @@
     gap: 0.9rem; align-items: center;
     padding: 0.85rem 0;
     border-bottom: 1px solid #E5E7EB;
+    flex-shrink: 0;
   }
   .featured-broker:last-child { border-bottom: 0; }
   .featured-broker__brand {
@@ -162,11 +179,11 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Market Pulse",
-  "url": "https://marketpulse.example.com/",
+  "name": "FxTopics",
+  "url": "https://fxtopics.example.com/",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://marketpulse.example.com/search.html?q={search_term_string}",
+    "target": "https://fxtopics.example.com/search.html?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -181,9 +198,9 @@
 <div class="utility-bar">
   <div class="utility-bar__inner">
     <div class="utility-bar__date">
-      <a href="mailto:contact@marketpulse.com" class="utility-bar__email">
+      <a href="mailto:contact@fxtopics.com" class="utility-bar__email">
         <i data-lucide="mail" class="utility-bar__email-icon" aria-hidden="true"></i>
-        <span>contact@marketpulse.com</span>
+        <span>contact@fxtopics.com</span>
       </a>
     </div>
     <div class="utility-bar__right">
@@ -214,7 +231,7 @@
 <header class="site-header">
   <div class="site-header__top">
     <div class="site-header__inner">
-      <a href="index.html" class="site-logo" aria-label="Market Pulse — Home">
+      <a href="index.html" class="site-logo" aria-label="FxTopics — Home">
         <span class="site-logo__mark" aria-hidden="true"></span>
         <span class="site-logo__text">
           Market<span style="color:var(--color-accent-dark)">Pulse</span>
@@ -239,7 +256,7 @@
      ============================================================ -->
 <nav class="nav" aria-label="Primary">
   <div class="nav__inner">
-    <a href="index.html" class="nav__logo" aria-label="Market Pulse — Home">
+    <a href="index.html" class="nav__logo" aria-label="FxTopics — Home">
       <span class="nav__logo-mark" aria-hidden="true"></span>
       <span class="nav__logo-text">Market<span style="color:var(--color-accent-dark)">Pulse</span></span>
     </a>
@@ -378,7 +395,7 @@
       <!-- RIGHT: Forex Featured Brokers -->
       <div class="widget-card">
         <h3 class="widget-card__title">Forex Featured Brokers</h3>
-        <div class="widget-card__body">
+        <div class="widget-card__body widget-card__body--scroll">
           <div class="featured-broker">
             <div class="featured-broker__brand">
               <div class="featured-broker__logo featured-broker__logo--valetax" aria-hidden="true">V</div>
@@ -736,7 +753,7 @@
     <div class="campaign-banner__inner">
       <div>
         <div class="campaign-banner__eyebrow">Advertise With Us</div>
-        <h2 class="campaign-banner__title">Grow your broker business with Market Pulse</h2>
+        <h2 class="campaign-banner__title">Grow your broker business with FxTopics</h2>
         <p class="campaign-banner__desc">Reach 2M+ active traders every month. Feature your broker, sponsor editorial coverage, and run high-intent campaigns across our forex, crypto and FinTech audience. Custom packages available.</p>
       </div>
       <div class="campaign-banner__actions">
@@ -1368,7 +1385,7 @@ Latest News
   </div>
 
   <div class="site-footer__bottom">
-    <div>© <span data-year>2026</span> Market Pulse Media Ltd. All rights reserved.</div>
+    <div>© <span data-year>2026</span> FxTopics Media Ltd. All rights reserved.</div>
     <div class="site-footer__bottom-links">
       <a href="#">Sitemap</a>
       <a href="#">Accessibility</a>
@@ -1381,7 +1398,7 @@ Latest News
 <!-- Financial compliance disclaimer -->
 <div class="disclaimer-bar">
   <div class="disclaimer-bar__inner">
-    <strong>Risk Disclosure:</strong> Trading forex, CFDs and other leveraged financial instruments carries a high level of risk and may not be suitable for all investors. You could lose more than your initial deposit. Past performance is not indicative of future results. The information on this site is for informational purposes only and does not constitute investment advice. Market Pulse does not provide execution services.
+    <strong>Risk Disclosure:</strong> Trading forex, CFDs and other leveraged financial instruments carries a high level of risk and may not be suitable for all investors. You could lose more than your initial deposit. Past performance is not indicative of future results. The information on this site is for informational purposes only and does not constitute investment advice. FxTopics does not provide execution services.
   </div>
 </div>
 

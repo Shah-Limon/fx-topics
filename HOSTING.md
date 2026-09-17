@@ -1,4 +1,4 @@
-# Hosting Market Pulse on Cloudflare (Permanent)
+# Hosting FxTopics on Cloudflare (Permanent)
 
 Two options — pick what you need.
 
@@ -9,7 +9,7 @@ Two options — pick what you need.
 Best for showing work-in-progress to a client. Works while your PC stays on.
 
 1. Start XAMPP (Apache + MySQL **Running**)
-2. Make sure site loads at `http://localhost/marketpulse/`
+2. Make sure site loads at `http://localhost/fxtopics/`
 3. Double-click `share.bat`
 4. First run downloads `cloudflared.exe` (~25 MB) into `.\tools\`
 5. Within ~5 sec, terminal shows a public URL like:
@@ -34,10 +34,10 @@ Recommended. Survives your PC being off. Free. HTTPS automatic. Custom domain su
 ### Step 1 — Create empty GitHub repo
 
 1. Go to [github.com/new](https://github.com/new)
-2. Repository name: `marketpulse` (or anything you like)
+2. Repository name: `fxtopics` (or anything you like)
 3. **Leave all checkboxes UNCHECKED** (no README, no .gitignore, no license)
 4. Click **Create repository**
-5. Copy the repo URL — looks like `https://github.com/YOUR_USERNAME/marketpulse.git`
+5. Copy the repo URL — looks like `https://github.com/YOUR_USERNAME/fxtopics.git`
 
 ### Step 2 — Create a Personal Access Token (PAT)
 
@@ -57,7 +57,7 @@ Double-click **`deploy.bat`** in this folder.
 
 It will ask for:
 - GitHub username (e.g. `yourusername`)
-- Repo name (default: `marketpulse`, press Enter to accept)
+- Repo name (default: `fxtopics`, press Enter to accept)
 - Git committer name and email (first time only)
 - Commit message (Enter for default)
 - When prompted for password, **paste your PAT** (the `ghp_...` token)
@@ -74,7 +74,7 @@ It then:
 1. Open [dash.cloudflare.com](https://dash.cloudflare.com) → left sidebar → **Workers & Pages**
 2. Click **Create application** → **Pages** tab → **Connect to Git**
 3. Authorize Cloudflare to access your GitHub (one-time)
-4. Select your `marketpulse` repo → **Begin setup**
+4. Select your `fxtopics` repo → **Begin setup**
 5. **Build settings:**
    - Framework preset: **None**
    - Build command: *(leave empty)*
@@ -84,7 +84,7 @@ It then:
 Within ~60 seconds, your site is live at:
 
 ```
-https://marketpulse.pages.dev
+https://fxtopics.pages.dev
 ```
 
 (or whatever Cloudflare assigned — you can rename it later in project settings)
@@ -92,7 +92,7 @@ https://marketpulse.pages.dev
 ### Step 5 — Add custom domain (optional)
 
 1. In your Pages project → **Custom domains** tab
-2. Click **Set up a custom domain** → enter `marketpulse.com` (or any domain you own)
+2. Click **Set up a custom domain** → enter `fxtopics.com` (or any domain you own)
 3. Cloudflare will guide you through DNS setup (you must add Cloudflare as nameserver for that domain)
 
 ---
@@ -150,5 +150,5 @@ Pushed to GitHub:
 | Survives PC shutdown | ❌ | ✅ |
 | Custom domain | ❌ | ✅ |
 | HTTPS | ✅ | ✅ |
-| URL | Random each run | Fixed (`marketpulse.pages.dev`) |
+| URL | Random each run | Fixed (`fxtopics.pages.dev`) |
 | Best for | Live client preview | Public launch |

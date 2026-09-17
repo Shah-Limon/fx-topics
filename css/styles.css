@@ -449,7 +449,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 }
 
 .nav__logo {
-  display: inline-flex;
+  display: none;
   align-items: center;
   gap: 0.5rem;
   flex-shrink: 0;
@@ -457,12 +457,35 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   color: var(--color-ink);
 }
 
+.nav.is-stuck .nav__logo {
+  display: inline-flex;
+}
+
 .nav__logo-mark {
   width: 22px;
   height: 22px;
   background: var(--color-ink);
-  border: 1.5px solid var(--color-accent);
   flex-shrink: 0;
+  position: relative;
+}
+
+.nav__logo-mark::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid var(--color-accent);
+  border-bottom: none;
+  border-right: none;
+}
+
+.nav__logo-mark::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
+  bottom: 4px;
+  right: 4px;
 }
 
 .nav__logo-text {

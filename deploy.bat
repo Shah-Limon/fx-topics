@@ -1,12 +1,12 @@
 @echo off
 REM ============================================================================
-REM Market Pulse - Git + Cloudflare Pages deploy helper
+REM FxTopics - Git + Cloudflare Pages deploy helper
 REM
 REM This script pushes your local site to GitHub. Cloudflare Pages will
 REM auto-deploy from there within ~60 seconds.
 REM
 REM First-time setup (one-time):
-REM   1. Create an EMPTY repo at github.com (e.g. YOUR_USERNAME/marketpulse)
+REM   1. Create an EMPTY repo at github.com (e.g. YOUR_USERNAME/fxtopics)
 REM      - Do NOT initialize with README/license/.gitignore
 REM   2. Create a Personal Access Token (PAT):
 REM      github.com → Settings → Developer settings → Personal access tokens
@@ -16,7 +16,7 @@ REM        - Scope: check "repo" (full repo access)
 REM        - Copy the token (starts with ghp_...)
 REM   3. Run this script. It will ask for:
 REM        - GitHub username
-REM        - Repo name (default: marketpulse)
+REM        - Repo name (default: fxtopics)
 REM        - PAT (the ghp_... token, treated as password)
 REM
 REM After first run, future deploys only need:
@@ -41,7 +41,7 @@ if errorlevel 1 (
 REM --- Get repo info ---
 echo.
 echo ============================================================================
-echo   Market Pulse - Cloudflare Pages Deploy Helper
+echo   FxTopics - Cloudflare Pages Deploy Helper
 echo ============================================================================
 echo.
 
@@ -67,8 +67,8 @@ if "!REPO!"=="" (
         pause
         exit /b 1
     )
-    set /p REPO_NAME="Repo name [marketpulse]: "
-    if "!REPO_NAME!"=="" set "REPO_NAME=marketpulse"
+    set /p REPO_NAME="Repo name [fxtopics]: "
+    if "!REPO_NAME!"=="" set "REPO_NAME=fxtopics"
     set "REPO=!GH_USER!/!REPO_NAME!"
     echo !REPO!> "%REPO_FILE%"
 )
@@ -97,8 +97,8 @@ if errorlevel 1 (
 
 REM --- Stage and commit ---
 echo.
-set /p MSG="Commit message [Update Market Pulse site]: "
-if "!MSG!"=="" set "MSG=Update Market Pulse site"
+set /p MSG="Commit message [Update FxTopics site]: "
+if "!MSG!"=="" set "MSG=Update FxTopics site"
 
 echo.
 echo [2/5] Staging files...
